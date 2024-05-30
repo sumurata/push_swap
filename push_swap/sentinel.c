@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sentinel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sumurata <sumurata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 14:29:18 by sumurata          #+#    #+#             */
-/*   Updated: 2024/05/18 14:30:53 by sumurata         ###   ########.fr       */
+/*   Created: 2024/05/30 16:43:27 by sumurata          #+#    #+#             */
+/*   Updated: 2024/05/30 16:56:11 by sumurata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_allfree(char **args)
+t_data	*ft_make_sentinel(void)
 {
-	int	i;
+	t_data	*sentinel;
 
-	i = 0;
-	while (args[i])
-		i++;
-	while (i >= 0)
-		free(args[i--]);
+	sentinel = (t_data *)malloc(sizeof(t_data));
+	if (sentinel == NULL)
+		return (1);
+	sentinel->next = sentinel;
+	sentinel->prev = sentinel;
+	return (sentinel);
 }

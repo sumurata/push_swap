@@ -6,7 +6,7 @@
 /*   By: sumurata <sumurata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 18:53:00 by sumurata          #+#    #+#             */
-/*   Updated: 2024/05/08 14:30:04 by sumurata         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:00:36 by sumurata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,21 @@
 
 static void	ft_display(char *str)
 {
-	ft_putendl_fd(str, 1);
+	char	*newline;
+
+	if (str == NULL)
+		return ;
+	write(2, str, ft_strlen(str));
+	newline = '\n';
+	write(2, &newline, 1);
 	exit(0);
+}
+
+static int	ft_isdigit(int c)
+{
+	if (!(c >= '0' && c <= '9'))
+		return (0);
+	return (1);
 }
 
 static int	ft_isnum(char *num)
@@ -28,10 +41,10 @@ static int	ft_isnum(char *num)
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	ft_errargs(int argc, char **argv)
@@ -47,15 +60,15 @@ void	ft_errargs(int argc, char **argv)
 		i = 1;
 		args = argv;
 	}
-	while (argv[i])
+	while (args[i])
 	{
 		tmp = ft_atoi(argv[i]);
 		if (ft_isnum(args[i]) == 1)
 			ft_display("Error");
-		if (tmp < INT_MAX || tmp > INT_MIN)
+		if (tmp > INT_MAX || tmp < INT_MIN)
 			ft_display("Error");
 		i++;
 	}
 	if (argc == 2)
-		ft_free(args);
+		ft_allfree(args);
 }

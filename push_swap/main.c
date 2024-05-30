@@ -6,15 +6,15 @@
 /*   By: sumurata <sumurata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 19:03:08 by sumurata          #+#    #+#             */
-/*   Updated: 2024/05/08 14:30:44 by sumurata         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:30:48 by sumurata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	getstack(t_list **stack, int argc, char **argv)
+static void	ft_initstack(t_data **stack, int argc, char **argv)
 {
-	t_list	*newlist;
+	t_data	*value;
 	char	**args;
 	int		i;
 
@@ -28,24 +28,25 @@ static void	getstack(t_list **stack, int argc, char **argv)
 	}
 	while (args[i])
 	{
-		newlist = ft_lstnew(ft_atoi(args[i]));
-		ft_lstadd_back(stack, newlist);
+		value = ft_lstnew(ft_atoi(args[i]));
+		ft_lstadd_back(ft_make_sentinel(), value);
 		i++;
 	}
 	if (argc == 2)
 		ft_free(args);
 }
 
-int	sort(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_list	**stack_a;
-	t_list	**stack_b;
+	t_data	**stack_a;
+	t_data	**stack_b;
 
 	if (argc < 2)
 		return (0);
 	ft_errargs(argc, argv);
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	stack_b = (t_list **)malloc(sizeof(t_list));
+	stack_a = (t_data **)malloc(sizeof(t_data));
+	stack_b = (t_data **)malloc(sizeof(t_data));
 	*stack_a = NULL;
 	*stack_b = NULL;
+	initstack(stack_a, argc, argv);
 }
