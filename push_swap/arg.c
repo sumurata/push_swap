@@ -6,23 +6,11 @@
 /*   By: sumurata <sumurata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 18:53:00 by sumurata          #+#    #+#             */
-/*   Updated: 2024/05/30 17:00:36 by sumurata         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:13:32 by sumurata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ft_display(char *str)
-{
-	char	*newline;
-
-	if (str == NULL)
-		return ;
-	write(2, str, ft_strlen(str));
-	newline = '\n';
-	write(2, &newline, 1);
-	exit(0);
-}
 
 static int	ft_isdigit(int c)
 {

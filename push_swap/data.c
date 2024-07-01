@@ -6,7 +6,7 @@
 /*   By: sumurata <sumurata@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:36:29 by sumurata          #+#    #+#             */
-/*   Updated: 2024/05/30 17:40:33 by sumurata         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:32:19 by sumurata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ void	ft_lstadd_back(t_data *sentinel, int value)
 	new_node->prev = last;
 	last->next = new_node;
 	sentinel->prev = new_node;
+}
+
+void	ft_lstsize(t_data *s_sort)
+{
+	int	count;
+
+	count = 0;
+	while (s_sort != NULL)
+	{
+		count++;
+		s_sort = s_sort->next;
+	}
+	return (count);
 }
